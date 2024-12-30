@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Розыгрыш</title>
+</head>
+<body>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="index_html.js"></script>
+	<div class="output">Никто не учавствует</div>
+	<div class="output_2">Бесплатных билетов: 0</div>
+	<hr>
+	<div class="input">
+		<div>Добавить участника</div>
+		<input type="text" placeholder="Участник" id="name"/>
+		<input type="number" placeholder="Билетов" id="tickets"/>
+		<button id="add" onclick="add()">добавить</button>
+	</div>
+	<div class="input_2">
+		<div>Добавить бесплатные билеты</div>
+		<input type="number" placeholder="шт." id="free_tickets"/>
+		<button id="add" onclick="add_tickets()">добавить</button>
+	</div>
+	<hr>
+	<div class="input_3">
+		<button id="roll_button" onclick="roll()">крутить</button>
+	</div>
+	<hr>
+	<div class="input_4">
+		<div>Калькулятор</div><div><input type="number" onchange="calc(this)" placeholder="руб."/></div><div class="input_4_output"></div>
+	</div>
+	<div class="winner"></div>
+	<hr>
+	<div class="history"></div>
+	<script>
+		$( document ).ready(function() {
+			console.log( "ready!" );
+			get_users();
+			get_free_tickets();
+			get_history();
+		});
+	</script>
+</body>
+</html>
