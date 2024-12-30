@@ -98,7 +98,9 @@ const roll = (tickets) => {
 		}
 	});
 
-	shuffle_array(members);
+	for (let i = 0; i < 100; i++) {
+		shuffle_array(members);
+	}
 
 	const shuffle_list = members.slice();
 	console.log(shuffle_list);
