@@ -1,5 +1,5 @@
-const ticket_price = 25;
-const roll_tickets = 18;
+const ticket_price = 30;
+const roll_tickets = 10;
 let free_tickets = 0;
 
 function update_table (users) {
@@ -106,7 +106,7 @@ function add_tickets () {
 
 
 function calc (e) {
-	$('.input_4_output').html( `${e.value} руб. = ${Math.trunc(e.value / 25)} билета`);
+	$('.input_4_output').html( `${e.value} руб. = ${Math.trunc(e.value / ticket_price)} билета`);
 }
 
 //format date from ms

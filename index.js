@@ -5,7 +5,7 @@ const express = require('express');
 
 let userlist = [];
 
-const save_userlist = () => fs.writeFileSync('userlist.json', JSON.stringify(userlist), { encoding: 'utf8' });
+const save_userlist = () => fs.writeFileSync('userlist.json', JSON.stringify(userlist, null, 4), { encoding: 'utf8' });
 const backup_userlist = () => {
 	const filename_date = new Date().toISOString().replace(/T/, '_').replace(/\..+/, '').replace(/\:/g, '_');;
 	//replace dots
@@ -26,7 +26,7 @@ if (fs.existsSync('userlist.json')) {
 
 let history = [];
 
-const save_history = () => fs.writeFileSync('history.json', JSON.stringify(history), { encoding: 'utf8' });
+const save_history = () => fs.writeFileSync('history.json', JSON.stringify(history, null, 4), { encoding: 'utf8' });
 
 if (fs.existsSync('history.json')) {
 	history = JSON.parse(fs.readFileSync('history.json', { encoding: 'utf8' }));
@@ -67,20 +67,20 @@ app.post('/free_tickets', (req, res) => {
 	if (req.body) {
 		if (req.body.value) {
 			free_tickets += parseInt(req.body.value);
-            res.send(JSON.stringify(free_tickets));
+            res.send(JSON.stringify(free_tickets, null, 4));
 		} else if (req.body.get_value) {
-			res.send(JSON.stringify(free_tickets));
+			res.send(JSON.stringify(free_tickets, null, 4));
 		}
 	}
 	
 });
 
 app.post('/history', (req, res) => {
-    res.send(JSON.stringify(history));
+    res.send(JSON.stringify(history, null, 4));
 });
 
 app.post('/users', (req, res) => {
-    res.send(JSON.stringify(userlist));
+    res.send(JSON.stringify(userlist, null, 4));
 });
 
 const roll = (tickets) => {
@@ -157,7 +157,7 @@ app.post('/roll', (req, res) => {
 	history.unshift({ winner, roll_tickets, shuffle_list, end, date: new Date().valueOf() });
 	save_history();
 
-    res.send(JSON.stringify({ winner, end, shuffle_list }));
+    res.send(JSON.stringify({ winner, end, shuffle_list }, null, 4));
 });
 
 app.listen(3333)
