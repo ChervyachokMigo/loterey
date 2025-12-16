@@ -47,6 +47,13 @@ execSync('wget -O loterey.zip https://github.com/ChervyachokMigo/loterey/archive
 
 		check_files( __dirname );
 		check_files( path.join(extract_path, 'loterey-main') );
+
+		console.log('[clean origin files]');
+    	fs.rmSync(path.join(__dirname, 'loterey.zip'), { recursive: true });
+
+		console.log('[clean temp]');
+		fs.rmSync(extract_path, { recursive: true });
+		
 	} catch (err) {
 		// handle any errors
 	}
